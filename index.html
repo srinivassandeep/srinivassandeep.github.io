@@ -18,20 +18,40 @@
             <h4>Champaign, Illinois, US</h4>
         </div>
     </header>
+    <nav class="tabs">
+    <button class="tab active" onclick="showTab('home')">Home</button>
+    <button class="tab" onclick="showTab('about')">About</button>
+        <button class="tab" onclick="showTab('research')">Research Interests</button>
+        <button class="tab" onclick="showTab('papers')">Working Papers</button>
+        <button class="tab" onclick="showTab('progress')">Research in Progress</button>
+        <button class="tab" onclick="showTab('talks')">Talks</button>
+        <button class="tab" onclick="showTab('teaching')">Teaching</button>
+        <button class="tab" onclick="showTab('services')">Services</button>
+        <button class="tab" onclick="showTab('contact')">Contact & Links</button>
+    </nav>
     <main>
-        <section>
-            <h2>About</h2>
-            <p>I am a Ph.D. candidate in Business Administration (Information Systems, Operations Management, Supply Chain and Analytics) at the Gies College of Business, University of Illinois Urbana-Champaign (UIUC), jointly advised by Prof. Gautam Pant and Prof. Ujjal Mukherjee.</p>
+        <section id="home" class="tab-content" style="display:block;">
+            <h2>Home</h2>
+            <h1 style="margin-bottom:0.5rem;">Sandeep Srinivas</h1>
+            <h3>Ph.D. Candidate</h3>
+            <h4>Gies College of Business, University of Illinois Urbana-Champaign</h4>
+            <h4>Champaign, Illinois, US</h4>
+            <p>I am a fifth-year Ph.D. candidate in Business Administration (Information Systems, Operations Management, Supply Chain and Analytics) at the Gies College of Business, University of Illinois Urbana-Champaign (UIUC), jointly advised by Prof. Gautam Pant and Prof. Ujjal Mukherjee.</p>
             <p><strong>I am on the 2025–2026 academic job market.</strong></p>
-            <p>Outside of work, I'm passionate about soccer (European football) and a long-time supporter of Manchester United.</p>
+            <h3>Research Interests</h3>
+            <p>My primary research interest lies in analyzing the impact of platforms and blockchain on technology-enabled food supply chains. In my dissertation research, I examine major innovations in the food supply chain over the past decade through a series of studies. I concentrate on societal outcomes such as food insecurity and food safety, and how food delivery platforms are transforming the restaurant industry. In terms of methodologies, I employ various causal inference methods, natural language processing techniques and analytical modeling in my research.</p>
+        </section>
+        <section id="about" class="tab-content" style="display:block;">
+            <h2>About</h2>
             <p>Before joining the PhD program, I worked as a data scientist at two large private sector banks in India. I worked on analytics projects across several functions including Corporate Credit, Forex, Treasury and Commercial Vehicle.</p>
             <p>I completed my MBA from Faculty of Management Studies (FMS), University of Delhi, India, where I actively pursued research projects and participated in international case competitions. Prior to MBA, I also had a brief stint as an Electrical Engineer at Reliance Industries, Hazira, India. I earned my undergraduate degree in Electrical and Electronics Engineering from National Institute of Technology, Calicut.</p>
+            <p>Outside of work, I'm passionate about soccer (European football) and a long-time supporter of Manchester United.</p>
         </section>
-        <section>
+        <section id="research" class="tab-content" style="display:none;">
             <h2>Research Interests</h2>
             <p>My primary research interest lies in analyzing the impact of platforms and blockchain on technology-enabled food supply chains. In my dissertation research, I examine major innovations in the food supply chain over the past decade through a series of studies. I concentrate on societal outcomes such as food insecurity and food safety, and how food delivery platforms are transforming the restaurant industry. In terms of methodologies, I employ various causal inference methods, natural language processing techniques and analytical modeling in my research.</p>
         </section>
-        <section>
+        <section id="papers" class="tab-content" style="display:none;">
             <h2>Working Papers</h2>
             <ul>
                 <li><strong>Srinivas, S., Pant, G., Mukherjee, U., “From Waste to Welfare: The Effect of Foodtech Platforms on Food Insecurity”</strong><br>
@@ -44,7 +64,7 @@
                 </li>
             </ul>
         </section>
-        <section>
+        <section id="progress" class="tab-content" style="display:none;">
             <h2>Research in Progress</h2>
             <ul>
                 <li><strong>Srinivas, S., Mukherjee, U., Pant, G., Banerjee, P., “Impact of Blockchain Traceability on Food Safety”</strong> [Data analysis in progress]</li>
@@ -52,7 +72,7 @@
                 <li><strong>Seshadri, S., Gao, X., Srinivas, S., “Demand Planning and Waste in the Perishable Food Industry”</strong> [Data collection in progress]</li>
             </ul>
         </section>
-        <section>
+        <section id="talks" class="tab-content" style="display:none;">
             <h2>Talks</h2>
             <ul>
                 <li><strong>Dining Disrupted: The Impact of Food Delivery Platforms on Restaurant Industry Market Structure</strong><br>
@@ -76,7 +96,7 @@
                 </li>
             </ul>
         </section>
-        <section>
+        <section id="teaching" class="tab-content" style="display:none;">
             <h2>Teaching</h2>
             <ul>
                 <li><strong>IT for Networked Organizations</strong> Gies College of Business<br>
@@ -84,7 +104,7 @@
                 </li>
             </ul>
         </section>
-        <section>
+        <section id="services" class="tab-content" style="display:none;">
             <h2>Services</h2>
             <ul>
                 <li><strong>Reviewer</strong><br>
@@ -101,7 +121,7 @@
                 </li>
             </ul>
         </section>
-        <section>
+        <section id="contact" class="tab-content" style="display:none;">
             <h2>Contact & Links</h2>
             <ul>
                 <li><a href="https://www.linkedin.com/in/sandeep-srinivas-5550aab8/" target="_blank">LinkedIn</a></li>
@@ -109,6 +129,20 @@
             </ul>
         </section>
     </main>
+    <script>
+        function showTab(tabId) {
+            var tabs = document.querySelectorAll('.tab');
+            var contents = document.querySelectorAll('.tab-content');
+            tabs.forEach(function(tab, idx) {
+                tab.classList.remove('active');
+            });
+            contents.forEach(function(content) {
+                content.style.display = 'none';
+            });
+            document.querySelector('.tab[onclick="showTab(\'' + tabId + '\')"]').classList.add('active');
+            document.getElementById(tabId).style.display = 'block';
+        }
+    </script>
     <footer>
         <p>&copy; 2025 Sandeep Srinivas</p>
     </footer>
