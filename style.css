@@ -115,6 +115,12 @@ main {
     margin-bottom: 1.5rem;
 }
 
+.tab-content ul ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-top: 1rem;
+}
+
 .tab-content li {
     margin-bottom: 1.5rem;
 }
