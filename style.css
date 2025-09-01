@@ -177,6 +177,21 @@ main {
     margin-bottom: 0;
 }
 
+.research-interests {
+    margin-top: 2rem;
+}
+
+.research-interests h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.research-interests p {
+    margin-bottom: 1rem;
+}
+
 footer {
     text-align: center;
     padding: 2rem;
