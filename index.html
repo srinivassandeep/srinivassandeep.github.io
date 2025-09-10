@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandeep Srinivas | Academic Profile</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .profile-info h2,
-        .profile-info h3,
-        .profile-info h4 {
-            font-size: 1.4rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.3rem;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -78,7 +69,7 @@
             contents.forEach(function(content) {
                 content.style.display = 'none';
             });
-            document.querySelector('.tab[onclick="showTab(\'' + tabId + '\')\"]').classList.add('active');
+            document.querySelector('.tab[onclick="showTab(\'' + tabId + '\')\']").classList.add('active');
             document.getElementById(tabId).style.display = 'block';
         }
     </script>
