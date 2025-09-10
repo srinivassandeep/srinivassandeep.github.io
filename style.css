@@ -236,12 +236,3 @@ footer {
         padding: 1rem;
     }
 }
-
-/* Ensure uniform font size for profile section (except name) */
-.profile-info h2,
-.profile-info h3,
-.profile-info h4 {
-    font-size: 1.4rem;
-    color: var(--secondary-color);
-    margin-bottom: 0.3rem;
-}
