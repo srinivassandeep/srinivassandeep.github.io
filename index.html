@@ -46,13 +46,31 @@
         </section>
         <section id="papers" class="tab-content" style="display:none;">
             <ul>
-                <li><strong>Srinivas, S., Pant, G., Mukherjee, U., "From Waste to Welfare: The Effect of Foodtech Platforms on Food Insecurity"</strong><br>
-                – Accepted for 2025 DSI Annual Conference Proceedings<br>
-                – Finalist, DSI 2025 Doctoral Research Showcase Award<br>
-                – Reject and Re-submit Decision at MIS Quarterly
+                <li>
+                    <div class="paper-item">
+                        <div class="paper-content">
+                            <strong>Srinivas, S., Pant, G., Mukherjee, U., "From Waste to Welfare: The Effect of Foodtech Platforms on Food Insecurity"</strong><br>
+                            – Finalist, DSI 2025 Doctoral Research Showcase Award<br>
+                            – To be published in 2025 DSI Annual Conference Proceedings<br>
+                            – Reject and Re-submit Decision at MIS Quarterly
+                        </div>
+                        <button class="abstract-btn" onclick="toggleAbstract('abstract1')">Abstract ▼</button>
+                    </div>
+                    <div id="abstract1" class="abstract-content" style="display:none;">
+                        <p><strong>Abstract:</strong> Despite substantial food waste at both the retail and consumer levels, food insecurity remains a significant concern in the United States. Traditional non-market solutions to food insecurity like food banks have relied heavily on donations. Recently, for-profit, market-driven foodtech platforms have emerged, using technology to address food waste by selling surplus food at discounted prices. However, the extent to which such affordable surplus food effectively reaches food insecure populations is uncertain and depends on factors such as spillover demand from cost-conscious or environmentally motivated consumers, the magnitude of price discounts, and the potential influence of the platforms’ operations on food banks. In this study, we examine the impact of one such platform that partners with supermarkets to sell near-expiration food through its mobile app. Although originally designed to reduce food waste, our results show a statistically significant decline in local food insecurity following the platform’s introduction. We estimate that around 860 individuals per county - approximately 146,000 people in total - experience reduced food insecurity due to the platform. Also, the platform’s impact is more pronounced in counties with higher poverty levels. Further, we find that the platform’s effect is complementary to the role of food banks in addressing food insecurity. Anecdotal evidence points to this effect being driven by the platform’s focus on perishable foods such as produce and fresh meat. These findings emphasize the potential of market-based platforms to work alongside non-market approaches in advancing sustainable development goals. The platforms provide policymakers with an additional tool to combat food insecurity and can partner with food banks to ensure adequate, fresh, and affordable food for vulnerable populations. For retailers, collaborating with such platforms offers a viable avenue to manage surplus perishable inventory, particularly in an environment of increasing regulations on commercial waste disposal.</p>
+                    </div>
                 </li>
-                <li><strong>Srinivas, S., Mukherjee, U., Pant, G., "Dining Disrupted: The Impact of Food Delivery Platforms on the Restaurant Industry Market Structure"</strong> [Under final preparation for submission to Information Systems Research]<br>
-                – Conditionally Accepted for 2025 ICIS Conference Proceedings
+                <li>
+                    <div class="paper-item">
+                        <div class="paper-content">
+                            <strong>Srinivas, S., Mukherjee, U., Pant, G., "Dining Disrupted: The Impact of Food Delivery Platforms on the Restaurant Industry Market Structure"</strong> [Under final preparation for submission to Information Systems Research]<br>
+                            – To be published in 2025 ICIS Conference Proceedings
+                        </div>
+                        <button class="abstract-btn" onclick="toggleAbstract('abstract2')">Abstract ▼</button>
+                    </div>
+                    <div id="abstract2" class="abstract-content" style="display:none;">
+                        <p><strong>Abstract:</strong> Food delivery platforms have significantly transformed the restaurant industry and consumer’s consumption of outside food. In this work, we examine the impact of the entry of food delivery platforms on the market structure of the restaurant industry and consumer preferences. Specifically, we focus on which types of restaurants, categorized by operational and service formats, benefit or lose from the presence of these platforms. Using several empirical techniques, we find that the entry of these platforms decreases the proportion of non-full-service (NFS) restaurants compared to full-service (FS) restaurants. To investigate the mechanisms driving this shift, we analyze Google restaurant reviews and find that both the number and proportion of first-time customers grow more rapidly for FS restaurants, highlighting the role of platforms in reducing discovery and familiarization costs. We examine key aspects of review content to highlight changes in consumer preferences and find that, post-platform-entry, the salience of service & staff increases in FS restaurant reviews, while the salience of atmosphere increases in NFS restaurant reviews. This pattern suggests that customers place greater emphasis on attributes traditionally less central to each restaurant type, viewing restaurants as modular bundles of offerings with different expectations for each attribute rather than integrated experiences. Such behavior aligns with the IS literature on platform-induced modularity in a novel context. These insights provide practical guidance for restaurants seeking to adapt to evolving consumer preferences in a platform-mediated environment.</p>
+                    </div>
                 </li>
             </ul>
         </section>
@@ -67,7 +85,7 @@
             <ul>
                 <li><strong>Dining Disrupted: The Impact of Food Delivery Platforms on Restaurant Industry Market Structure</strong>
                     <ul>
-                        <li>International Conference on Information Systems, Nashville, TN (Conditionally Accepted) Dec 2025</li>
+                        <li>International Conference on Information Systems, Nashville, TN (Scheduled) Dec 2025</li>
                         <li>Conference on Information Systems and Technology, Atlanta, GA (Scheduled) Oct 2025</li>
                         <li>INFORMS Annual Meeting 2025, Atlanta, GA (Scheduled) Oct 2025</li>
                         <li>Workshop on Information Systems and Economics, Bangkok, Thailand Dec 2024</li>
@@ -153,6 +171,20 @@
             document.querySelector('.tab[onclick="showTab(\'' + tabId + '\')"]').classList.add('active');
             document.getElementById(tabId).style.display = 'block';
         }
+
+        function toggleAbstract(abstractId) {
+            var abstract = document.getElementById(abstractId);
+            var button = document.querySelector('[onclick="toggleAbstract(\'' + abstractId + '\')"]');
+            
+            if (abstract.style.display === 'none') {
+                abstract.style.display = 'block';
+                button.innerHTML = 'Abstract ▲';
+            } else {
+                abstract.style.display = 'none';
+                button.innerHTML = 'Abstract ▼';
+            }
+        }
+
     </script>
 </body>
 </html>
