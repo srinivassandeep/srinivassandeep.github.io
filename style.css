@@ -291,7 +291,7 @@ footer {
     width: 100%;
     border-collapse: collapse;
     margin-top: 0.5rem;
-    table-layout: auto;
+    table-layout: fixed;
 }
 
 .talks-table td {
@@ -301,13 +301,50 @@ footer {
 }
 
 .talks-table td:first-child {
-    padding-right: 1cm;
-    width: auto;
+    width: calc(100% - 120px);
+    padding-right: 2rem;
 }
 
 .talks-table td:last-child {
-    width: 1px;
+    width: 120px;
+    min-width: 120px;
     text-align: right;
     font-weight: normal;
     white-space: nowrap;
+}
+
+.upcoming-talks {
+    margin: 2rem 0;
+}
+
+.upcoming-talks h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.upcoming-talks .talk-item {
+    margin-bottom: 1.5rem;
+}
+
+.upcoming-talks .talk-title {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: var(--primary-color);
+}
+
+.upcoming-talks .talk-details {
+    color: var(--secondary-color);
+    font-style: italic;
+    margin-left: 1rem;
+}
+
+.upcoming-talks a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.upcoming-talks a:hover {
+    text-decoration: underline;
 }
