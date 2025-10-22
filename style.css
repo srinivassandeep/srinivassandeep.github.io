@@ -286,3 +286,25 @@ footer {
     border-left: 3px solid var(--accent-color);
     border-radius: 3px;
 }
+
+.talks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+.talks-table td {
+    padding: 0.2rem 1rem 0.2rem 0;
+    border: none;
+    vertical-align: top;
+}
+
+.talks-table td:first-child {
+    width: 70%;
+}
+
+.talks-table td:last-child {
+    width: 30%;
+    text-align: right;
+    font-weight: normal;
+}
