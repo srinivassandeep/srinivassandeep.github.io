@@ -291,7 +291,7 @@ footer {
     width: 100%;
     border-collapse: collapse;
     margin-top: 0.5rem;
-    table-layout: fixed;
+    table-layout: auto;
 }
 
 .talks-table td {
@@ -301,13 +301,12 @@ footer {
 }
 
 .talks-table td:first-child {
-    width: calc(100% - 120px);
-    padding-right: 2rem;
+    padding-right: 1cm;
+    width: auto;
 }
 
 .talks-table td:last-child {
-    width: 120px;
-    min-width: 120px;
+    width: 1px;
     text-align: right;
     font-weight: normal;
     white-space: nowrap;
