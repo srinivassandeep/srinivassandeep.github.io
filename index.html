@@ -159,15 +159,24 @@
             display: block;
         }
 
+        .sidebar-right {
+            width: 160px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 5em;
+            padding-left: 1.2em;
+            border-left: 1px solid var(--rule);
+        }
+
         .author__urls {
             list-style: none;
             margin: 0;
             padding: 0;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
         }
 
         .author__urls li {
-            margin-bottom: 5px;
+            margin-bottom: 0.5em;
         }
 
         .author__urls a {
@@ -353,10 +362,25 @@
                 flex: 1;
             }
 
-            .author__urls {
+            .sidebar-right {
+                order: -1;
+                position: static;
                 width: 100%;
+                padding-left: 0;
+                border-left: none;
+            }
+
+            .sidebar {
+                order: -2;
+            }
+
+            .author__urls {
                 display: flex;
                 gap: 1.2em;
+            }
+
+            .author__urls li {
+                margin-bottom: 0;
             }
 
             main {
@@ -394,11 +418,6 @@
                     <span>Binghamton, New York, US</span>
                 </p>
             </div>
-            <ul class="author__urls">
-                <li><a href="https://drive.google.com/file/d/1unfF3fvYcaVOzc432rad5Of9GiRY1HY8/view?usp=drive_link" target="_blank">CV</a></li>
-                <li><a href="mailto:ssrinivas@binghamton.edu">Email</a></li>
-                <li><a href="https://www.linkedin.com/in/sandeep-srinivas-5550aab8/" target="_blank">LinkedIn</a></li>
-            </ul>
         </aside>
 
         <main>
@@ -577,6 +596,14 @@
                 </ul>
             </section>
         </main>
+
+        <aside class="sidebar-right">
+            <ul class="author__urls">
+                <li><a href="https://drive.google.com/file/d/1unfF3fvYcaVOzc432rad5Of9GiRY1HY8/view?usp=drive_link" target="_blank">CV</a></li>
+                <li><a href="mailto:ssrinivas@binghamton.edu">Email</a></li>
+                <li><a href="https://www.linkedin.com/in/sandeep-srinivas-5550aab8/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </aside>
     </div>
 
     <div class="page__footer">
