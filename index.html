@@ -4,213 +4,590 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandeep Srinivas | Academic Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --text: #000000;
+            --muted: #000000;
+            --link: #1b5e20;
+            --link-hover: #0d3b12;
+            --rule: #a5d6a7;
+            --light-green: #e8f5e9;
+            --footer: #1b5e20;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 17px;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--text);
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        /* ---------- Masthead ---------- */
+        .masthead {
+            border-bottom: 1px solid var(--rule);
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .masthead__inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.65em 1em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5em;
+        }
+
+        .site-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .tab {
+            position: relative;
+            background: none;
+            border: none;
+            padding: 0.25em 0;
+            margin: 0 0.9em;
+            font-family: inherit;
+            font-size: 1.05rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .tab:last-child {
+            margin-right: 0;
+        }
+
+        .tab::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 4px;
+            background: var(--rule);
+            transform: scaleX(0);
+            transition: transform 0.25s ease;
+        }
+
+        .tab:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tab.active::before {
+            background: var(--link);
+            transform: scaleX(1);
+        }
+
+        /* ---------- Page layout ---------- */
+        .page {
+            flex: 1;
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2.5em 1em 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 3em;
+        }
+
+        /* ---------- Sidebar ---------- */
+        .sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 5em;
+        }
+
+        .author__avatar img {
+            display: block;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .author__name {
+            margin: 0.6em 0 0;
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .author__bio {
+            margin: 0.6em 0 1.2em;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .author__bio span {
+            display: block;
+        }
+
+        .author__urls {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 0.75rem;
+        }
+
+        .author__urls li {
+            margin-bottom: 5px;
+        }
+
+        .author__urls a {
+            color: var(--text);
+        }
+
+        .author__urls a:hover {
+            color: var(--link);
+        }
+
+        /* ---------- Main content ---------- */
+        main {
+            flex: 1;
+            min-width: 0;
+            max-width: 720px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content p {
+            margin: 0 0 1.3em;
+        }
+
+        .tab-content h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 2em 0 0.5em;
+            padding-bottom: 0.9em;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .tab-content > h3:first-child {
+            margin-top: 0;
+        }
+
+        .tab-content > ul {
+            list-style: disc;
+            margin: 1em 0;
+            padding-left: 40px;
+        }
+
+        .tab-content > ul > li {
+            margin-bottom: 1.3em;
+        }
+
+        .research-interests {
+            margin-top: 2em;
+        }
+
+        /* ---------- Papers ---------- */
+        .paper-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1em;
+        }
+
+        .paper-content {
+            flex: 1;
+        }
+
+        .paper-content strong {
+            font-weight: 400;
+        }
+
+        .abstract-btn {
+            background: none;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+            padding: 0.15em 0.6em;
+            font-family: inherit;
+            font-size: 0.75rem;
+            color: var(--link);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .abstract-btn:hover {
+            border-color: var(--link);
+            background: var(--light-green);
+        }
+
+        .abstract-content {
+            margin-top: 0.8em;
+            padding: 0.6em 0.8em 0.6em 1em;
+            background: var(--light-green);
+            border-left: 3px solid var(--link);
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .abstract-content p {
+            margin: 0;
+        }
+
+        /* ---------- Talks ---------- */
+        .talks-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5em;
+            font-size: 0.9rem;
+        }
+
+        .talks-table td {
+            padding: 0.15em 0;
+            vertical-align: top;
+        }
+
+        .talks-table td:last-child {
+            width: 90px;
+            text-align: right;
+            white-space: nowrap;
+            color: var(--muted);
+        }
+
+        /* ---------- Teaching ---------- */
+        .student-feedback p {
+            color: var(--muted);
+        }
+
+        /* ---------- Footer ---------- */
+        .page__footer {
+            margin-top: 3em;
+            background: var(--footer);
+            color: #ffffff;
+        }
+
+        .page__footer footer {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2em 1em;
+            font-size: 0.7rem;
+        }
+
+        .page__footer p {
+            margin: 0;
+        }
+
+        /* ---------- Small screens ---------- */
+        @media (max-width: 800px) {
+            .masthead {
+                position: static;
+            }
+
+            .masthead__inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tabs {
+                justify-content: flex-start;
+            }
+
+            .tab {
+                margin: 0 1.2em 0 0;
+            }
+
+            .page {
+                flex-direction: column;
+                gap: 1.5em;
+                padding-top: 1.5em;
+            }
+
+            .sidebar {
+                position: static;
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 0 1.2em;
+                padding-bottom: 1.2em;
+                border-bottom: 1px solid var(--rule);
+            }
+
+            .author__avatar img {
+                width: 90px;
+                height: 90px;
+            }
+
+            .author__content {
+                flex: 1;
+            }
+
+            .author__urls {
+                width: 100%;
+                display: flex;
+                gap: 1.2em;
+            }
+
+            main {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="profile-img">
-            <img src="Sandeep_Srinivas.JPG" alt="Sandeep Srinivas" />
-        </div>
-        <div class="profile-info">
-            <h1>Sandeep Srinivas</h1>
-            <h2>Ph.D. Candidate</h2>
-            <h3>Gies College of Business</h3>
-            <h3>University of Illinois Urbana-Champaign</h3>
-            <h3>Champaign, Illinois, US</h3>
+    <header class="masthead">
+        <div class="masthead__inner">
+            <a class="site-title" href="#" onclick="showTab('home'); return false;">Sandeep Srinivas</a>
+            <nav class="tabs">
+                <button class="tab active" onclick="showTab('home')">Home</button>
+                <button class="tab" onclick="showTab('about')">About</button>
+                <button class="tab" onclick="showTab('papers')">Working Papers</button>
+                <button class="tab" onclick="showTab('progress')">Research in Progress</button>
+                <button class="tab" onclick="showTab('talks')">Talks</button>
+                <button class="tab" onclick="showTab('teaching')">Teaching</button>
+                <button class="tab" onclick="showTab('service')">Service</button>
+            </nav>
         </div>
     </header>
-    <nav class="tabs">
-        <button class="tab active" onclick="showTab('home')">Home</button>
-        <button class="tab" onclick="showTab('about')">About</button>
-        <button class="tab" onclick="showTab('papers')">Working Papers</button>
-        <button class="tab" onclick="showTab('progress')">Research in Progress</button>
-        <button class="tab" onclick="showTab('talks')">Talks</button>
-        <button class="tab" onclick="showTab('teaching')">Teaching</button>
-        <button class="tab" onclick="showTab('service')">Service</button>
-    </nav>
-            <main>
-        <section id="home" class="tab-content" style="display:block;">
-    <p>I am a fifth-year Ph.D. candidate in Business Administration (Information Systems, Operations Management, Supply Chain and Analytics) at the <a href="https://giesbusiness.illinois.edu/" target="_blank">Gies College of Business, University of Illinois Urbana-Champaign (UIUC)</a>, jointly advised by <a href="https://giesbusiness.illinois.edu/profile/gautam-pant" target="_blank">Prof. Gautam Pant</a> and <a href="https://giesbusiness.illinois.edu/profile/ujjal-mukherjee" target="_blank">Prof. Ujjal Mukherjee</a>.</p>
-    <div class="research-interests">
-        <h3>Research Interests</h3>
-        <p><strong>Topics:</strong> Digital Platforms, Blockchain, Societal Impact, Food Industry, Food Delivery, Food Sustainability</p>
-        <p><strong>Methods:</strong> Empirical Research, Causal Inference, Natural Language Processing, Analytical Modeling</p>
-        <p>My research examines the impact of digital platforms and emerging technologies on offline societal and strategic outcomes. In my dissertation, I study major technological innovations in the food industry over the past decade through a series of studies, focusing on societal outcomes such as food insecurity and food safety, and on the strategic impact of food delivery platforms on the restaurant industry.</p>
-    </div>
-    
-    </section>
-    <section id="about" class="tab-content" style="display:none;">
-            <p>Before joining the PhD program, I worked as a data scientist at two large private sector banks in India. I worked on analytics projects across several functions including Corporate Credit, Forex, Treasury and Commercial Vehicle Loans.</p>
-            <p>I completed my MBA from Faculty of Management Studies (FMS), University of Delhi, India, where I actively pursued research projects and participated in international case competitions. Prior to MBA, I also had a brief stint as an Electrical Engineer at Reliance Industries, Hazira, India. I earned my undergraduate degree in Electrical and Electronics Engineering from National Institute of Technology, Calicut.</p>
-            <p>Outside of work, I'm passionate about soccer (European football) and a long-time supporter of Manchester United.</p>
-        </section>
-        <section id="papers" class="tab-content" style="display:none;">
-            <ul>
-                <li>
-                    <div class="paper-item">
-                        <div class="paper-content">
-                            <strong>Srinivas, S., Mukherjee, U., Pant, G., "Dining Disrupted: The Impact of Food Delivery Platforms on the Restaurant Industry Market Structure"</strong> <br>
-                            – ICIS 2025 Proceedings. 9. <a href="https://aisel.aisnet.org/icis2025/sharing_econ/sharing_econ/9" target="_blank">https://aisel.aisnet.org/icis2025/sharing_econ/sharing_econ/9</a> <br>
-                            – Revise & Re-submit at Information Systems Research<br>
-                            – Recognized as most downloaded article at ICIS 2025
-                        </div>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract2')">Abstract ▼</button>
-                    </div>
-                    <div id="abstract2" class="abstract-content" style="display:none;">
-                        <p><strong>Abstract:</strong> Food delivery platforms have significantly transformed the restaurant industry and consumers' consumption of restaurant food. In this work, we examine the impact of food delivery platforms on the market structure of the restaurant industry and consumer preferences. Specifically, we focus on which types of restaurants, full-service restaurants versus others, benefit or lose from the presence of these platforms. Using several empirical strategies, we find that platform entry reduces the share of ‘non-full-service’ (NFS) restaurants, driven by faster growth of full-service (FS) restaurants relative to NFS restaurants. To investigate the mechanisms driving this shift, we analyze Google restaurant reviews and find that both the number and proportion of first-time reviews grow more rapidly for FS restaurants, highlighting the role of platforms in reducing discovery and familiarization costs. We examine key aspects of review content to highlight changes in consumer preferences and find that, post-platform-entry, the salience of ‘service & staff’ increases in FS restaurant reviews, while the salience of ‘atmosphere’ increases in NFS restaurant reviews. As delivery becomes commoditized, reviewer attention shifts across restaurant attributes, a pattern consistent with diners treating restaurants as modular bundles with component-specific expectations rather than purely integrated experiences. These insights on platform-induced modularity provide practical guidance for restaurants seeking to adapt to evolving consumer preferences.</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="paper-item">
-                        <div class="paper-content">
-                            <strong>Srinivas, S., Pant, G., Mukherjee, U., "From Waste to Welfare: The Effect of Foodtech Platforms on Food Insecurity"</strong><br>
-                            – Runner-up: 2026 POMS College of Sustainable Operations Best Student Paper Competition<br>
-                            – Winner: Best Student Paper at the 2025 Annual Decision Sciences Institute Conference<br>
-                            – Published in 2025 DSI Annual Conference Proceedings (peer-reviewed)<br>
-                            – Under review at M&SOM
-                        </div>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract1')">Abstract ▼</button>
-                    </div>
-                    <div id="abstract1" class="abstract-content" style="display:none;">
-                        <p><strong>Abstract:</strong> Despite substantial food waste at both the retail and consumer levels, food insecurity remains a significant concern in the United States. Traditional non-market solutions to food insecurity like food banks have relied heavily on donations. Recently, for-profit, market-driven foodtech platforms have emerged, using technology to address food waste by selling surplus food at discounted prices. However, the extent to which such affordable surplus food effectively reaches food insecure populations is uncertain and depends on factors such as spillover demand from cost-conscious or environmentally motivated consumers, the magnitude of price discounts, and the potential influence of the platforms’ operations on food banks. In this study, we examine the impact of one such platform that partners with supermarkets to sell near-expiration food through its mobile app. Although originally designed to reduce food waste, our results show a statistically significant decline in local food insecurity following the platform’s introduction. We estimate that around 860 individuals per county - approximately 146,000 people in total - experience reduced food insecurity due to the platform. Also, the platform’s impact is more pronounced in counties with higher poverty levels. Further, we find that the platform’s effect is complementary to the role of food banks in addressing food insecurity. Anecdotal evidence points to this effect being driven by the platform’s focus on perishable foods such as produce and fresh meat. These findings emphasize the potential of market-based platforms to work alongside non-market approaches in advancing sustainable development goals. The platforms provide policymakers with an additional tool to combat food insecurity and can partner with food banks to ensure adequate, fresh, and affordable food for vulnerable populations. For retailers, collaborating with such platforms offers a viable avenue to manage surplus perishable inventory, particularly in an environment of increasing regulations on commercial waste disposal.</p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section id="progress" class="tab-content" style="display:none;">
-            <ul>
-                <li>
-                    <div class="paper-item">
-                        <div class="paper-content">
-                            <strong>Srinivas, S., Mukherjee, U., Pant, G., Banerjee, P., "Impact of Blockchain Traceability on Food Safety"</strong> [Data analysis in progress]
-                        </div>
-                        <button class="abstract-btn" onclick="toggleAbstract('abstract3')">Abstract ▼</button>
-                    </div>
-                    <div id="abstract3" class="abstract-content" style="display:none;">
-                        <p><strong>Abstract:</strong> Maintaining safety in the food supply chain is important for the health of consumers. Consequently, many governments and international bodies emphasize the significance of product traceability throughout the food supply chain. Recently, an increasing number of firms have turned to blockchain technology for their supply chains, drawn by its inherent qualities of transparency and immutability. While numerous studies advocate for its implementation and enumerate potential benefits, empirical evaluations of blockchain’s influence on food safety outcomes remain limited. We use a staggered difference-in-difference approach to empirically investigate the tangible impact of blockchain adoption in relation to food recalls, specifically concerning recall duration and frequency. Our findings indicate that the firms integrating blockchain for supply chain traceability experience shortened recall durations. This result holds valuable implications for businesses, considering the substantial financial burdens posed by recalls, and for policymakers, in terms of safeguarding public health.</p>
-                    </div>
-                </li>
-                <li><strong>Srinivas, S., Mehrotra, M., Rajapakshe, T., "Sales Promotions and Food Waste"</strong> [Analytical model development in progress]</li>
-                <li><strong>Seshadri, S., Gao, X., Srinivas, S., "Demand Planning and Waste in the Perishable Food Industry"</strong> [Data collection in progress]</li>
-            </ul>
-        </section>
-        <section id="talks" class="tab-content" style="display:none;">
-    <ul>
-        <li><strong>Dining Disrupted: The Impact of Food Delivery Platforms on Restaurant Industry Market Structure</strong>
-            <table class="talks-table">
-                <tr>
-                    <td>International Conference on Information Systems, Nashville, TN</td>
-                    <td>Dec 2025</td>
-                </tr>
-                <tr>
-                    <td>Conference on Information Systems and Technology, Atlanta, GA</td>
-                    <td>Oct 2025</td>
-                </tr>
-                <tr>
-                    <td>INFORMS Annual Meeting 2025, Atlanta, GA</td>
-                    <td>Oct 2025</td>
-                </tr>
-                <tr>
-                    <td>Workshop on Information Systems and Economics, Bangkok, Thailand</td>
-                    <td>Dec 2024</td>
-                </tr>
-                <tr>
-                    <td>DSI Annual Conference, Phoenix, AZ</td>
-                    <td>Nov 2024</td>
-                </tr>
-            </table>
-        </li>
-        <li><strong>Impact of Blockchain Traceability on Food Safety</strong>
-            <table class="talks-table">
-                <tr>
-                    <td>INFORMS Annual Meeting, Seattle, WA</td>
-                    <td>Oct 2024</td>
-                </tr>
-                <tr>
-                    <td>Annual POMS Conference, Minneapolis, MN</td>
-                    <td>May 2024</td>
-                </tr>
-                <tr>
-                    <td>Supply Chain Management Conference, Champaign, IL</td>
-                    <td>Feb 2024</td>
-                </tr>
-            </table>
-        </li>
-        <li><strong>From Waste to Welfare: The Effect of Foodtech Platforms on Food Insecurity</strong>
-            <table class="talks-table">
-                <tr>
-                    <td>DSI Annual Conference, Orlando, FL</td>
-                    <td>Nov 2025</td>
-                </tr>
-                <tr>
-                    <td>Annual POMS Conference, Atlanta, GA</td>
-                    <td>May 2025</td>
-                </tr>
-                <tr>
-                    <td>Supply Chain Management Conference, Champaign, IL</td>
-                    <td>Mar 2025</td>
-                </tr>
-                <tr>
-                    <td>DSI Annual Conference, Atlanta, GA</td>
-                    <td>Nov 2023</td>
-                </tr>
-                <tr>
-                    <td>INFORMS Annual Meeting, Phoenix, AZ</td>
-                    <td>Oct 2023</td>
-                </tr>
-            </table>
-        </li>
-    </ul>
-</section>
-        </section>
-        <section id="teaching" class="tab-content" style="display:none;">
-            <h3>Teaching Experience</h3>
-            <ul>
-                <li><strong>IT for Networked Organizations</strong> Gies College of Business<br>
-                Instructor (Student Evaluation: 4.11/5.0) Fall 2024
-                </li>
-            </ul>
-            <h3>Student Feedback</h3>
-            <div class="student-feedback">
-                <p><i>"I believe the instructor for this course truly made it so that I wanted to learn. In most other classes, I focus on getting a good grade and passing the class. He made it clear that his objective was for us to truly learn and that it was ok if we stumbled along the way. It made more willing to truly learn the material."</i></p>
 
-                <p><i>"I think one of the majors strengths of this course was definitely the variety of topics covered. I feel like the professor knew a lot about every topic and always seemed to know what he was talking about. I emailed him multiple times throughout the semester and I would usually get helpful responses very quickly."</i></p>
-
-                <p><i>"…he would oftentimes let us fix mistakes we made. I never felt like I was robbed of any points and always knew exactly why I missed points when I missed them. He also was very kind and would give extensions when we needed them."</i></p>
-
-                <p><i>"He helps bring the energy in the room, whether its asking about our day or making joke or having fun activities we can do while learned more about the course."</i></p>
-
-                <p><i>"Sandeep is awesome, highly recommend."</i></p>
+    <div class="page">
+        <aside class="sidebar">
+            <div class="author__avatar">
+                <img src="Sandeep_Srinivas.JPG" alt="Sandeep Srinivas" />
             </div>
-        </section>
-        <section id="service" class="tab-content" style="display:none;">
-            <ul>
-                <li><strong>Reviewer</strong><br>
-                International Conference on Information Systems (2025, 2024), Conference on Information Systems and Technology (2025, 2024), INFORMS MSOM Conference (2025)
-                </li>
-                <li><strong>Session Chair</strong><br>
-                Annual POMS Conference (2025), DSI Annual Conference (2024), INFORMS Annual Meeting (2024), Supply Chain Management Conference, UIUC (2025)
-                </li>
-                <li><strong>Member</strong><br>
-                AIS, INFORMS, POMS, DSI
-                </li>
-                <li><strong>Volunteer</strong><br>
-                Midwest Healthcare Management Conference, UIUC (2022)
-                </li>
+            <div class="author__content">
+                <h1 class="author__name">Sandeep Srinivas</h1>
+                <p class="author__bio">
+                    <span>Ph.D. Candidate</span>
+                    <span>Gies College of Business</span>
+                    <span>University of Illinois Urbana-Champaign</span>
+                    <span>Champaign, Illinois, US</span>
+                </p>
+            </div>
+            <ul class="author__urls">
+                <li><a href="https://drive.google.com/file/d/1unfF3fvYcaVOzc432rad5Of9GiRY1HY8/view?usp=drive_link" target="_blank">CV</a></li>
+                <li><a href="mailto:sandee2@illinois.edu">Email</a></li>
+                <li><a href="https://www.linkedin.com/in/sandeep-srinivas-5550aab8/" target="_blank">LinkedIn</a></li>
             </ul>
-        </section>
-    </main>
-    <div class="contact-pane">
-        <h3>Links</h3>
-        <ul>
-            <li><a href="https://drive.google.com/file/d/1unfF3fvYcaVOzc432rad5Of9GiRY1HY8/view?usp=drive_link" target="_blank">CV</a></li>
-            <li><a href="mailto:sandee2@illinois.edu">Email</a></li>
-            <li><a href="https://www.linkedin.com/in/sandeep-srinivas-5550aab8/" target="_blank">LinkedIn</a></li>
-        </ul>
+        </aside>
+
+        <main>
+            <section id="home" class="tab-content" style="display:block;">
+                <p>I am a fifth-year Ph.D. candidate in Business Administration (Information Systems, Operations Management, Supply Chain and Analytics) at the <a href="https://giesbusiness.illinois.edu/" target="_blank">Gies College of Business, University of Illinois Urbana-Champaign (UIUC)</a>, jointly advised by <a href="https://giesbusiness.illinois.edu/profile/gautam-pant" target="_blank">Prof. Gautam Pant</a> and <a href="https://giesbusiness.illinois.edu/profile/ujjal-mukherjee" target="_blank">Prof. Ujjal Mukherjee</a>.</p>
+                <div class="research-interests">
+                    <h3>Research Interests</h3>
+                    <p><strong>Topics:</strong> Digital Platforms, Blockchain, Societal Impact, Food Industry, Food Delivery, Food Sustainability</p>
+                    <p><strong>Methods:</strong> Empirical Research, Causal Inference, Natural Language Processing, Analytical Modeling</p>
+                    <p>My research examines the impact of digital platforms and emerging technologies on offline societal and strategic outcomes. In my dissertation, I study major technological innovations in the food industry over the past decade through a series of studies, focusing on societal outcomes such as food insecurity and food safety, and on the strategic impact of food delivery platforms on the restaurant industry.</p>
+                </div>
+            </section>
+
+            <section id="about" class="tab-content" style="display:none;">
+                <p>Before joining the PhD program, I worked as a data scientist at two large private sector banks in India. I worked on analytics projects across several functions including Corporate Credit, Forex, Treasury and Commercial Vehicle Loans.</p>
+                <p>I completed my MBA from Faculty of Management Studies (FMS), University of Delhi, India, where I actively pursued research projects and participated in international case competitions. Prior to MBA, I also had a brief stint as an Electrical Engineer at Reliance Industries, Hazira, India. I earned my undergraduate degree in Electrical and Electronics Engineering from National Institute of Technology, Calicut.</p>
+                <p>Outside of work, I'm passionate about soccer (European football) and a long-time supporter of Manchester United.</p>
+            </section>
+
+            <section id="papers" class="tab-content" style="display:none;">
+                <ul>
+                    <li>
+                        <div class="paper-item">
+                            <div class="paper-content">
+                                <strong>Srinivas, S., Mukherjee, U., Pant, G., "Dining Disrupted: The Impact of Food Delivery Platforms on the Restaurant Industry Market Structure"</strong> <br>
+                                – ICIS 2025 Proceedings. 9. <a href="https://aisel.aisnet.org/icis2025/sharing_econ/sharing_econ/9" target="_blank">https://aisel.aisnet.org/icis2025/sharing_econ/sharing_econ/9</a> <br>
+                                – Revise &amp; Re-submit at Information Systems Research<br>
+                                – Recognized as most downloaded article at ICIS 2025
+                            </div>
+                            <button class="abstract-btn" onclick="toggleAbstract('abstract2')">Abstract ▼</button>
+                        </div>
+                        <div id="abstract2" class="abstract-content" style="display:none;">
+                            <p><strong>Abstract:</strong> Food delivery platforms have significantly transformed the restaurant industry and consumers' consumption of restaurant food. In this work, we examine the impact of food delivery platforms on the market structure of the restaurant industry and consumer preferences. Specifically, we focus on which types of restaurants, full-service restaurants versus others, benefit or lose from the presence of these platforms. Using several empirical strategies, we find that platform entry reduces the share of ‘non-full-service’ (NFS) restaurants, driven by faster growth of full-service (FS) restaurants relative to NFS restaurants. To investigate the mechanisms driving this shift, we analyze Google restaurant reviews and find that both the number and proportion of first-time reviews grow more rapidly for FS restaurants, highlighting the role of platforms in reducing discovery and familiarization costs. We examine key aspects of review content to highlight changes in consumer preferences and find that, post-platform-entry, the salience of ‘service &amp; staff’ increases in FS restaurant reviews, while the salience of ‘atmosphere’ increases in NFS restaurant reviews. As delivery becomes commoditized, reviewer attention shifts across restaurant attributes, a pattern consistent with diners treating restaurants as modular bundles with component-specific expectations rather than purely integrated experiences. These insights on platform-induced modularity provide practical guidance for restaurants seeking to adapt to evolving consumer preferences.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="paper-item">
+                            <div class="paper-content">
+                                <strong>Srinivas, S., Pant, G., Mukherjee, U., "From Waste to Welfare: The Effect of Foodtech Platforms on Food Insecurity"</strong><br>
+                                – Runner-up: 2026 POMS College of Sustainable Operations Best Student Paper Competition<br>
+                                – Winner: Best Student Paper at the 2025 Annual Decision Sciences Institute Conference<br>
+                                – Published in 2025 DSI Annual Conference Proceedings (peer-reviewed)<br>
+                                – Under review at M&amp;SOM
+                            </div>
+                            <button class="abstract-btn" onclick="toggleAbstract('abstract1')">Abstract ▼</button>
+                        </div>
+                        <div id="abstract1" class="abstract-content" style="display:none;">
+                            <p><strong>Abstract:</strong> Despite substantial food waste at both the retail and consumer levels, food insecurity remains a significant concern in the United States. Traditional non-market solutions to food insecurity like food banks have relied heavily on donations. Recently, for-profit, market-driven foodtech platforms have emerged, using technology to address food waste by selling surplus food at discounted prices. However, the extent to which such affordable surplus food effectively reaches food insecure populations is uncertain and depends on factors such as spillover demand from cost-conscious or environmentally motivated consumers, the magnitude of price discounts, and the potential influence of the platforms’ operations on food banks. In this study, we examine the impact of one such platform that partners with supermarkets to sell near-expiration food through its mobile app. Although originally designed to reduce food waste, our results show a statistically significant decline in local food insecurity following the platform’s introduction. We estimate that around 860 individuals per county - approximately 146,000 people in total - experience reduced food insecurity due to the platform. Also, the platform’s impact is more pronounced in counties with higher poverty levels. Further, we find that the platform’s effect is complementary to the role of food banks in addressing food insecurity. Anecdotal evidence points to this effect being driven by the platform’s focus on perishable foods such as produce and fresh meat. These findings emphasize the potential of market-based platforms to work alongside non-market approaches in advancing sustainable development goals. The platforms provide policymakers with an additional tool to combat food insecurity and can partner with food banks to ensure adequate, fresh, and affordable food for vulnerable populations. For retailers, collaborating with such platforms offers a viable avenue to manage surplus perishable inventory, particularly in an environment of increasing regulations on commercial waste disposal.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="progress" class="tab-content" style="display:none;">
+                <ul>
+                    <li>
+                        <div class="paper-item">
+                            <div class="paper-content">
+                                <strong>Srinivas, S., Mukherjee, U., Pant, G., Banerjee, P., "Impact of Blockchain Traceability on Food Safety"</strong> [Data analysis in progress]
+                            </div>
+                            <button class="abstract-btn" onclick="toggleAbstract('abstract3')">Abstract ▼</button>
+                        </div>
+                        <div id="abstract3" class="abstract-content" style="display:none;">
+                            <p><strong>Abstract:</strong> Maintaining safety in the food supply chain is important for the health of consumers. Consequently, many governments and international bodies emphasize the significance of product traceability throughout the food supply chain. Recently, an increasing number of firms have turned to blockchain technology for their supply chains, drawn by its inherent qualities of transparency and immutability. While numerous studies advocate for its implementation and enumerate potential benefits, empirical evaluations of blockchain’s influence on food safety outcomes remain limited. We use a staggered difference-in-difference approach to empirically investigate the tangible impact of blockchain adoption in relation to food recalls, specifically concerning recall duration and frequency. Our findings indicate that the firms integrating blockchain for supply chain traceability experience shortened recall durations. This result holds valuable implications for businesses, considering the substantial financial burdens posed by recalls, and for policymakers, in terms of safeguarding public health.</p>
+                        </div>
+                    </li>
+                    <li><strong>Srinivas, S., Mehrotra, M., Rajapakshe, T., "Sales Promotions and Food Waste"</strong> [Analytical model development in progress]</li>
+                    <li><strong>Seshadri, S., Gao, X., Srinivas, S., "Demand Planning and Waste in the Perishable Food Industry"</strong> [Data collection in progress]</li>
+                </ul>
+            </section>
+
+            <section id="talks" class="tab-content" style="display:none;">
+                <ul>
+                    <li><strong>Dining Disrupted: The Impact of Food Delivery Platforms on Restaurant Industry Market Structure</strong>
+                        <table class="talks-table">
+                            <tr>
+                                <td>International Conference on Information Systems, Nashville, TN</td>
+                                <td>Dec 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Conference on Information Systems and Technology, Atlanta, GA</td>
+                                <td>Oct 2025</td>
+                            </tr>
+                            <tr>
+                                <td>INFORMS Annual Meeting 2025, Atlanta, GA</td>
+                                <td>Oct 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Workshop on Information Systems and Economics, Bangkok, Thailand</td>
+                                <td>Dec 2024</td>
+                            </tr>
+                            <tr>
+                                <td>DSI Annual Conference, Phoenix, AZ</td>
+                                <td>Nov 2024</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li><strong>Impact of Blockchain Traceability on Food Safety</strong>
+                        <table class="talks-table">
+                            <tr>
+                                <td>INFORMS Annual Meeting, Seattle, WA</td>
+                                <td>Oct 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Annual POMS Conference, Minneapolis, MN</td>
+                                <td>May 2024</td>
+                            </tr>
+                            <tr>
+                                <td>Supply Chain Management Conference, Champaign, IL</td>
+                                <td>Feb 2024</td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li><strong>From Waste to Welfare: The Effect of Foodtech Platforms on Food Insecurity</strong>
+                        <table class="talks-table">
+                            <tr>
+                                <td>DSI Annual Conference, Orlando, FL</td>
+                                <td>Nov 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Annual POMS Conference, Atlanta, GA</td>
+                                <td>May 2025</td>
+                            </tr>
+                            <tr>
+                                <td>Supply Chain Management Conference, Champaign, IL</td>
+                                <td>Mar 2025</td>
+                            </tr>
+                            <tr>
+                                <td>DSI Annual Conference, Atlanta, GA</td>
+                                <td>Nov 2023</td>
+                            </tr>
+                            <tr>
+                                <td>INFORMS Annual Meeting, Phoenix, AZ</td>
+                                <td>Oct 2023</td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="teaching" class="tab-content" style="display:none;">
+                <h3>Teaching Experience</h3>
+                <ul>
+                    <li><strong>IT for Networked Organizations</strong> Gies College of Business<br>
+                    Instructor (Student Evaluation: 4.11/5.0) Fall 2024
+                    </li>
+                </ul>
+                <h3>Student Feedback</h3>
+                <div class="student-feedback">
+                    <p><i>"I believe the instructor for this course truly made it so that I wanted to learn. In most other classes, I focus on getting a good grade and passing the class. He made it clear that his objective was for us to truly learn and that it was ok if we stumbled along the way. It made more willing to truly learn the material."</i></p>
+
+                    <p><i>"I think one of the majors strengths of this course was definitely the variety of topics covered. I feel like the professor knew a lot about every topic and always seemed to know what he was talking about. I emailed him multiple times throughout the semester and I would usually get helpful responses very quickly."</i></p>
+
+                    <p><i>"…he would oftentimes let us fix mistakes we made. I never felt like I was robbed of any points and always knew exactly why I missed points when I missed them. He also was very kind and would give extensions when we needed them."</i></p>
+
+                    <p><i>"He helps bring the energy in the room, whether its asking about our day or making joke or having fun activities we can do while learned more about the course."</i></p>
+
+                    <p><i>"Sandeep is awesome, highly recommend."</i></p>
+                </div>
+            </section>
+
+            <section id="service" class="tab-content" style="display:none;">
+                <ul>
+                    <li><strong>Reviewer</strong><br>
+                    International Conference on Information Systems (2025, 2024), Conference on Information Systems and Technology (2025, 2024), INFORMS MSOM Conference (2025)
+                    </li>
+                    <li><strong>Session Chair</strong><br>
+                    Annual POMS Conference (2025), DSI Annual Conference (2024), INFORMS Annual Meeting (2024), Supply Chain Management Conference, UIUC (2025)
+                    </li>
+                    <li><strong>Member</strong><br>
+                    AIS, INFORMS, POMS, DSI
+                    </li>
+                    <li><strong>Volunteer</strong><br>
+                    Midwest Healthcare Management Conference, UIUC (2022)
+                    </li>
+                </ul>
+            </section>
+        </main>
     </div>
-    <footer>
-        <p>&copy; 2025 Sandeep Srinivas</p>
-    </footer>
+
+    <div class="page__footer">
+        <footer>
+            <p>&copy; 2025 Sandeep Srinivas</p>
+        </footer>
+    </div>
+
     <script>
         function showTab(tabId) {
             var tabs = document.querySelectorAll('.tab');
@@ -228,7 +605,7 @@
         function toggleAbstract(abstractId) {
             var abstract = document.getElementById(abstractId);
             var button = document.querySelector('[onclick="toggleAbstract(\'' + abstractId + '\')"]');
-            
+
             if (abstract.style.display === 'none') {
                 abstract.style.display = 'block';
                 button.innerHTML = 'Abstract ▲';
